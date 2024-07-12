@@ -3,13 +3,13 @@ from interface import IngestorInterface, IngestionError
 from pdf_ingestor import PdfIngestor
 from docx_ingestor import DocxIngestor
 from csv_ingestor import CsvIngestor
-from txt_ingestor import TxtIngestor
+from text_ingestor import TextIngestor
 from model import QuoteModel
 
 class Ingestor(IngestorInterface):
     """A class to ingest quotes from various types of files."""
 
-    ingestors = [PdfIngestor, DocxIngestor, CsvIngestor, TxtIngestor]
+    ingestors = [PdfIngestor, DocxIngestor, CsvIngestor, TextIngestor]
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:

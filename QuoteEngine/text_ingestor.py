@@ -4,22 +4,22 @@ from .interface import IngestorInterface, IngestionError
 from .model import QuoteModel
 
 
-class TxtIngestor(IngestorInterface):
-    """A class to ingest quotes from txt files."""
+class TextIngestor(IngestorInterface):
+    """A class to ingest quotes from text files."""
 
     allowed_extensions = ['txt']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
-        """Parse the txt file at the given path.
+        """Parse the text file at the given path.
 
         If the file at the given path does not have a .txt extension,
         an IngestionError will be raised.
 
-        :param path: The path of the txt file to parse.
+        :param path: The path of the text file to parse.
         :return:
             A list of QuoteModel objects parsed from the lines of the
-            txt file.
+            text file.
         """
         if not cls.can_ingest(path):
             raise IngestionError

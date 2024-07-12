@@ -20,7 +20,10 @@ class IngestorInterface(ABC):
         :param path: The path of the file to check.
         :return: A boolean containing the result of the check.
         """
-        return path.split('.')[-1] in cls.allowed_extensions
+        path_split = path.split('.')
+        if len(path_split) < 2:
+            raise IngestionError
+        return path_split[-1] in cls.allowed_extensions
 
     @classmethod
     @abstractmethod

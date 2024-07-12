@@ -1,7 +1,12 @@
 class QuoteModel:
     """A quotation, with body and author."""
 
-    def __init__(self, body, author):
+    def __init__(self, body: str, author: str):
+        """Create a new QuoteModel object.
+
+        :param body: The body of the quote.
+        :param author: The author of the quote.
+        """
         self.body = body
         self.author = author
 

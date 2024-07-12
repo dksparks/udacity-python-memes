@@ -6,13 +6,22 @@ from .model import QuoteModel
 
 
 class PdfIngestor(IngestorInterface):
-    """XXXXXXXXXXXXXXXXXXXX"""
+    """A class to ingest quotes from pdf files."""
 
     allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
-        """XXXXXXXXXXXXXXX"""
+        """Parse the pdf file at the given path.
+
+        If the file at the given path does not have a .pdf extension,
+        an IngestionError will be raised.
+
+        :param path: The path of the pdf file to parse.
+        :return:
+            A list of QuoteModel objects parsed from the lines of the
+            pdf file.
+        """
         if not cls.can_ingest(path):
             raise IngestionError
         quotes = []
@@ -22,7 +31,11 @@ class PdfIngestor(IngestorInterface):
         for line in lines:
             if not line:
                 continue
-            body, author = line.split('-')
+            try:
+                body, author = line.split('-')
+            except ValueError:
+                print('Quote cannot be separated into body and author.')
+                continue
             body = body.strip(cls.strip_chars['body'])
             author = author.strip(cls.strip_chars['author'])
             quotes.append(QuoteModel(body, author))

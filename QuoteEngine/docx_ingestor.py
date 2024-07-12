@@ -20,6 +20,8 @@ class DocxIngestor(IngestorInterface):
         for p in doc.paragraphs:
             if not p.text:
                 continue
-            body, author = [x.strip('"\' \n') for x in p.text.split('-')]
+            body, author = [x.strip('\n') for x in p.text.split('-')]
+            body = body.strip(cls.strip_chars['body'])
+            author = author.strip(cls.strip_chars['author'])
             quotes.append(QuoteModel(body, author))
         return quotes

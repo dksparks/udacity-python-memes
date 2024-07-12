@@ -1,4 +1,5 @@
 from typing import List
+from string import whitespace
 from abc import ABC, abstractmethod
 from .model import QuoteModel
 
@@ -7,6 +8,7 @@ class IngestorInterface(ABC):
     """An abstract base class for quote ingestors."""
 
     allowed_extensions = []
+    strip_chars = {'body': whitespace + '"\'', 'author': whitespace}
 
     @classmethod
     def can_ingest(cls, path: str) -> bool:

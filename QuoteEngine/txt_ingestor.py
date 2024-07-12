@@ -17,7 +17,10 @@ class TxtIngestor(IngestorInterface):
         quotes = []
         with open(path) as file:
             for line in file:
-                body, author = [x.strip('"\' \n') for x in line.split('-')]
-                quote = QuoteModel(body, author)
-                quotes.append(quote)
+                if not line:
+                    continue
+                body, author = [x.strip('\n') for x in line.split('-')]
+                body = body.strip(cls.strip_chars['body'])
+                author = author.strip(cls.strip_chars['author'])
+                quotes.append(QuoteModel(body, author))
         return quotes

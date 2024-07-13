@@ -39,6 +39,11 @@ class IngestorInterface(ABC):
         """
         pass
 
+    @classmethod
+    def split_fail(cls):
+        """This method will be called if a quote cannot be split."""
+        print('[Quote cannot be separated into body and author.]')
+
 
 class IngestionError(Exception):
     """An exception to raise if a file cannot be ingested."""

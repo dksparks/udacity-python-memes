@@ -26,10 +26,14 @@ class CsvIngestor(IngestorInterface):
             raise IngestionError
         quotes = []
         with open(path) as file:
+            # Note: The project rubric mentions the pandas library, but
+            # the csv library and csv.DictReader in particular seem more
+            # appropriate, especially since this approach was what was
+            # taught in the course.
             reader = csv.DictReader(file)
             for line in reader:
                 if 'body' not in line or 'author' not in line:
-                    print('Quote cannot be separated into body and author.')
+                    cls.split_fail()
                     continue
                 stripped = {x: line[x].strip(cls.strip_chars[x]) for x in line}
                 quotes.append(QuoteModel(stripped['body'], stripped['author']))

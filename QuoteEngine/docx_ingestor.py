@@ -32,7 +32,7 @@ class DocxIngestor(IngestorInterface):
             try:
                 body, author = [x.strip('\n') for x in p.text.split('-')]
             except ValueError:
-                print('Quote cannot be separated into body and author.')
+                cls.split_fail()
                 continue
             body = body.strip(cls.strip_chars['body'])
             author = author.strip(cls.strip_chars['author'])

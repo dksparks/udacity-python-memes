@@ -1,10 +1,10 @@
 from typing import List
-from interface import IngestorInterface, IngestionError
-from pdf_ingestor import PdfIngestor
-from docx_ingestor import DocxIngestor
-from csv_ingestor import CsvIngestor
-from text_ingestor import TextIngestor
-from model import QuoteModel
+from .IngestorInterface import IngestorInterface, IngestionError
+from .PdfIngestor import PdfIngestor
+from .DocxIngestor import DocxIngestor
+from .CsvIngestor import CsvIngestor
+from .TextIngestor import TextIngestor
+from .QuoteModel import QuoteModel
 
 class Ingestor(IngestorInterface):
     """A class to ingest quotes from various types of files."""

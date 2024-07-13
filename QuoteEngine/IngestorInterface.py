@@ -1,7 +1,7 @@
 from typing import List
 from string import whitespace
 from abc import ABC, abstractmethod
-from .model import QuoteModel
+from .QuoteModel import QuoteModel
 
 
 class IngestorInterface(ABC):

@@ -1,7 +1,9 @@
 import os
 import random
-
-# @TODO Import your Ingestor and MemeEngine classes
+from argparse import ArgumentParser
+from QuoteEngine.Ingestor import Ingestor
+from QuoteEngine.QuoteModel import QuoteModel
+from MemeEngine import MemeEngine
 
 
 def generate_meme(path=None, body=None, author=None):
@@ -17,7 +19,16 @@ def generate_meme(path=None, body=None, author=None):
 
         img = random.choice(imgs)
     else:
-        img = path[0]
+        # For some reason, the starter code treated path as a List,
+        # with img taken as the first element of path:
+        #
+        # img = path[0]
+        #
+        # This is inconsistent with the specifications for the project,
+        # in which path is described as a single path to a single image.
+        # Thus, I have changed this line to the following:
+        #
+        img = path
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
@@ -40,9 +51,15 @@ def generate_meme(path=None, body=None, author=None):
 
 
 if __name__ == "__main__":
-    # @TODO Use ArgumentParser to parse the following CLI arguments
-    # path - path to an image file
-    # body - quote body to add to the image
-    # author - quote author to add to the image
-    args = None
+    parser = ArgumentParser(description="Generate a meme.")
+    # Arguments will default to None if not provided,
+    # as expected by generate_meme defined above.
+    parser.add_argument('--path', type=str, help='path to an image file')
+    parser.add_argument(
+        '--body', type=str, help='quote body to add to the image',
+    )
+    parser.add_argument(
+        '--author', type=str, help='quote author to add to the image',
+    )
+    args = parser.parse_args()
     print(generate_meme(args.path, args.body, args.author))

@@ -6,10 +6,16 @@ import string
 
 
 class MemeEngine:
-    """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
+    """A class to add text to images and save the result."""
 
     def __init__(self, output_dir):
-        """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
+        """Create a new MemeEngine with the provided output directory.
+
+        The directory will be created if it does not exist.
+
+        :param output_dir:
+            The output directory in which to save generated images.
+        """
         try:
             makedirs(output_dir)
         except FileExistsError:
@@ -19,7 +25,22 @@ class MemeEngine:
     def make_meme(
         self, img_path: str, text: str, author: str, width=500,
     ) -> str:
-        """XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"""
+        """Generate a new meme image and save it to a randomized name.
+
+        If the provided image is wider than the specified width, it will
+        be reduced to that size with the aspect ratio preserved.
+
+        The provided text and author will be added to the image.
+
+        The result will be saved to a randomized name in the output_dir
+        of the MemeEngine object.
+
+        :param img_path: The path to the input image.
+        :param text: The body to text to add to the image.
+        :param author: The author to be added to the image.
+        :param width: The maximum width of the result.
+        :return: The path where the result was saved.
+        """
         try:
             img = Image.open(img_path)
         except FileNotFoundError:

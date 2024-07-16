@@ -57,15 +57,38 @@ class MemeEngine:
         )
         x, y = map(random.randrange, img.size)
         draw.text((x, y), full_text, font=font, fill='white', anchor='mm')
-        out_chars = \
-                string.digits + string.ascii_lowercase + string.ascii_uppercase
-        out_len = 8
-        # Randomly generate output filenames, repeating until we generate one
-        # that does not already exist.
-        while True:
-            out_file = ''.join(random.choices(out_chars, k=out_len)) + '.png'
-            out_path = os.path.join(self.output_dir, out_file)
-            if not os.path.exists(out_path):
-                break
+        out_path = self.random_file_path(self.output_dir, 'png')
         img.save(out_path)
         return out_path
+
+    @staticmethod
+    def random_file_path(
+        directory: str, extension: str,
+        length = 8, characters = string.digits + string.ascii_letters,
+    ) -> str:
+        """Generate a random file name, ensuring that it does not exist.
+
+        A string of the length provided will be generated at random by
+        drawing (with replacement) from the characters provided, and the
+        extension provided will be appended to it. If extension is the
+        empty string, no extension will be appended.
+
+        If a file with this name exists in the provided directory, the
+        process will instead be repeated until a file name is generated
+        that does not exist.
+
+        :param directory:
+            The directory for the randomly generated file name.
+        :param extension: The file extension to append (after a dot).
+        :param length: The length of the string to generate.
+        :param characters: The string of characters from which to draw.
+        :return: The path of the randomly generated file name.
+        """
+        while True:
+            file_name = ''.join(random.choices(characters, k=length))
+            if extension:
+                file_name += '.' + extension
+            file_path = os.path.join(directory, file_name)
+            if not os.path.exists(file_path):
+                break
+        return file_path

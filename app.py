@@ -58,7 +58,7 @@ def meme_post():
     # We do not know the format of the incoming file, and while we could
     # try to infer it from a possible file extension in the URL, there
     # is really no point since the file will be removed later anyway.
-    temp_file_path = './tmp/000000'
+    temp_file_path = meme.random_file_path('./tmp', '')
     with open(temp_file_path, 'wb') as temp_file:
         temp_file.write(image.content)
 

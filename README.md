@@ -53,3 +53,20 @@ The Random button generates an image and quotation at
 random, while the Creator button takes the user to a
 form where an input image and quotation can be
 supplied.
+
+## Dependencies
+
+This project's dependencies are specified in the file
+`requirements.txt`. The recommended way to handle
+these dependencies is to install them in a virtual
+environment:
+```
+python -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+```
+Note that the virtual environment name `env` can be
+replaced by another name of the user's choice.
+
+When finished executing the project, simply run
+`deactivate` to deactivate the virtual environment.

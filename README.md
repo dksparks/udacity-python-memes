@@ -70,3 +70,94 @@ replaced by another name of the user's choice.
 
 When finished executing the project, simply run
 `deactivate` to deactivate the virtual environment.
+
+## Description of Components
+
+Although the recommended way to interact with this
+project is via the CLI tool or the Flask app, the user
+may still find this description of the individual
+components of the project to be helpful. Perhaps more
+honestly, this section is here only because the
+project seems to require it.
+
+> Note: Each component's list of dependencies below
+> includes only those dependencies not found in the
+> Python standard library.
+
+### `main.py` (or `meme.py`)
+
+This file provides the aforementioned CLI tool.
+
+Dependencies: `Pillow` (external), `QuoteEngine`,
+`MemeEngine`
+
+### `app.py`, `static`, `templates`, `tmp`
+
+The file `app.py` provides the Flask app.
+The directories `static`, `templates`, `tmp` are used
+by this app.
+
+Dependencies: `flask` (external), `Pillow` (external),
+`QuoteEngine`, `MemeEngine`
+
+### `_data`, `fonts`
+
+These directories simply provide default data and fonts.
+
+Dependencies: none
+
+### `MemeEngine.py`
+
+This file provides the `MemeEngine` class, which has
+`make_meme` and `random_file_path` methods. Please
+refer to the associated documentation for further
+details of how to use these methods.
+
+Dependencies: `Pillow` (external)
+
+### `QuoteEngine`
+
+This module contains several submodules:
+
+#### `QuoteModel.py`
+
+This submodule provides the `QuoteModel` class.
+
+Dependencies: none
+
+#### `IngestorInterface.py`
+
+This submodule provides `IngestorInterface`, an
+abstract base class for ingesting quotes, which has
+`can_ingest` and `split_fail` methods. Please refer to
+the associated documentation for further details of
+how to use these methods. It also has an abstract
+method `parse`, which is realized by various
+subclasses.
+
+This submodule also provides a custom IngestionError
+exception that can be raised if quote ingestion fails.
+
+Dependencies: `QuoteModel`
+
+#### `CsvIngestor.py`, `DocxIngestor.py`, 'PdfIngestor.py`, `TextIngestor.py`
+
+These submodules respectively provide the subclasses
+`CsvIngestor`, `DocxIngestor`, 'PdfIngestor`, and
+`TextIngestor`. Each subclass provides a realization
+of the abstract `parse` method that ingests quotes
+from the appropriate file type.
+
+Dependencies:  `QuoteModel`, `IngestorInterface`
+
+#### `Ingestor.py`
+
+This submodule provides a final subclass `Ingestor`
+with a realization of `parse` that determines and
+applies the appropriate ingestion strategy for a file
+provided.
+
+
+Dependencies:  `QuoteModel`, `IngestorInterface`,
+`CsvIngestor`, `DocxIngestor`, `PdfIngestor`,
+`TextIngestor`

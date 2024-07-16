@@ -3,6 +3,7 @@ from os import makedirs
 import os.path
 import random
 import string
+import textwrap
 
 
 class MemeEngine:
@@ -46,13 +47,21 @@ class MemeEngine:
         if input_width > width:
             height = int(input_height * width / input_width)
             img.resize((width, height))
-        full_text = f'"{text}" — {author}'
+        wrapped_text = textwrap.fill(text, 30)
+        full_text = f'"{wrapped_text}"\n— {author}'
         draw = ImageDraw.Draw(img)
         font = ImageFont.truetype(
-            './fonts/NotoSans_ExtraCondensed-Black.ttf', size=36
+            './fonts/NotoSans_ExtraCondensed-Black.ttf', size=24
         )
-        x, y = map(random.randrange, img.size)
-        draw.text((x, y), full_text, font=font, fill='white', anchor='mm')
+        # Center the text at a random pooint in the middle of the image,
+        # defined as the intersection of the middle third horizontally
+        # and the middle third vertically.
+        middle = tuple(map(lambda t: (int(t / 3), int(t * 2 / 3)), img.size))
+        x, y = tuple(map(lambda t: random.randrange(*t), middle))
+        draw.text(
+            (x, y), full_text, anchor='mm',
+            font=font, fill='white', stroke_fill='black', stroke_width=2,
+        )
         out_path = self.random_file_path(self.output_dir, 'png')
         img.save(out_path)
         return out_path

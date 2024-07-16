@@ -20,12 +20,23 @@ This project contains both a command-line interface
 The command-line interface tool is named main.py (or
 meme.py).
 
-> The project rubric specifies that the CLI tool
+> Note: The project rubric specifies that the CLI tool
 > should be called ```main.py```, whereas the project
 > description and starter code refer to it as
 > ```meme.py```. I have addressed this inconsistency
 > by creating ```main.py``` as a symbolic link to
 > ```meme.py```.
+
+It can be called with any or all of three optional
+arguments:
+- ```--path```: the path to an input image file
+- ```--body```: the body of the quotation to add
+- ```--author```: the author of the quotation to add
+Any argument that is not supplied by the user will
+instead be drawn from the default data.
+
+The result will be saved under a random file name in
+the ```tmp``` directory.
 
 ## Flask App
 

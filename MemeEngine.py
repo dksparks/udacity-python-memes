@@ -41,11 +41,7 @@ class MemeEngine:
         :param width: The maximum width of the result.
         :return: The path where the result was saved.
         """
-        try:
-            img = Image.open(img_path)
-        except FileNotFoundError:
-            print(f'The image {img_path} could not be found.')
-            return
+        img = Image.open(img_path)
         input_width, input_height = img.size
         if input_width > width:
             height = int(input_height * width / input_width)

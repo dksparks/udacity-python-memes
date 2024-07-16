@@ -1,6 +1,7 @@
 import os
 import random
 from argparse import ArgumentParser
+from PIL import UnidentifiedImageError
 from QuoteEngine.Ingestor import Ingestor
 from QuoteEngine.QuoteModel import QuoteModel
 from MemeEngine import MemeEngine
@@ -46,8 +47,15 @@ def generate_meme(path=None, body=None, author=None):
         quote = QuoteModel(body, author)
 
     meme = MemeEngine('./tmp')
-    path = meme.make_meme(img, quote.body, quote.author)
-    return path
+    try:
+        path = meme.make_meme(img, quote.body, quote.author)
+        return path
+    except FileNotFoundError:
+        return f'The input image {img} could not be found.'
+    except UnidentifiedImageError:
+        return f'The input image {img} could not be identified.'
+    except OSError:
+        return 'The output image could not be written.'
 
 
 if __name__ == "__main__":

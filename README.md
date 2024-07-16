@@ -1,5 +1,4 @@
-# Meme Generator Project for Udacity Course
-  (Large Python Codebases with Libraries)
+# Meme Generator Project for Udacity Course (Large Python Codebases with Libraries)
 
 This is my submission for the Meme Generator project,
 which is the final part of the Udacity course on Large

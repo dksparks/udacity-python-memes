@@ -29,9 +29,11 @@ meme.py).
 
 It can be called with any or all of three optional
 arguments:
+
 - ```--path```: the path to an input image file
 - ```--body```: the body of the quotation to add
 - ```--author```: the author of the quotation to add
+
 Any argument that is not supplied by the user will
 instead be drawn from the default data.
 

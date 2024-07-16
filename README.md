@@ -39,7 +39,8 @@ instead be drawn from the default data.
 
 Example:<br>
 ```python main.py --path /path/to/some/image --body
-'Veni, vidi, vici' --author 'Julius Caesar'```
+'Veni, vidi, vici' --author 'Julius Caesar'
+```
 
 The result will be saved under a random file name in
 the ```tmp``` directory.

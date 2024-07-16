@@ -46,4 +46,10 @@ the `tmp` directory.
 
 ## Flask App
 
-description here
+The app can be run as `python app.py` and accessed in
+a browser by navigating to
+[http://127.0.0.1:5000](http://127.0.0.1:5000).
+The Random button generates an image and quotation at
+random, while the Creator button takes the user to a
+form where an input image and quotation can be
+supplied.

@@ -17,7 +17,15 @@ This project contains both a command-line interface
 
 ## Command-Line Interface Tool
 
-description here
+The command-line interface tool is named main.py (or
+meme.py).
+
+> The project rubric specifies that the CLI tool
+> should be called ```main.py```, whereas the project
+> description and starter code refer to it as
+> ```meme.py```. I have addressed this inconsistency
+> by creating ```main.py``` as a symbolic link to
+> ```meme.py```.
 
 ## Flask App
 

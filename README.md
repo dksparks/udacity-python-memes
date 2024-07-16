@@ -17,8 +17,8 @@ This project contains both a command-line interface
 
 ## Command-Line Interface Tool
 
-The command-line interface tool is named main.py (or
-meme.py).
+The command-line interface tool is named ```main.py```
+(or ```meme.py```).
 
 > Note: The project rubric specifies that the CLI tool
 > should be called ```main.py```, whereas the project
@@ -36,6 +36,10 @@ arguments:
 
 Any argument that is not supplied by the user will
 instead be drawn from the default data.
+
+Example:<br>
+```python main.py --path /path/to/some/image --body
+'Veni, vidi, vici' --author 'Julius Caesar'```
 
 The result will be saved under a random file name in
 the ```tmp``` directory.

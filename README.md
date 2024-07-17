@@ -138,7 +138,7 @@ exception that can be raised if quote ingestion fails.
 
 Dependencies: `QuoteModel`
 
-#### `CsvIngestor.py`, `DocxIngestor.py`, 'PdfIngestor.py`, `TextIngestor.py`
+#### `CsvIngestor.py`, `DocxIngestor.py`, `PdfIngestor.py`, `TextIngestor.py`
 
 These submodules respectively provide the subclasses
 `CsvIngestor`, `DocxIngestor`, 'PdfIngestor`, and

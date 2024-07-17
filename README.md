@@ -141,7 +141,7 @@ Dependencies: `QuoteModel`
 #### `CsvIngestor.py`, `DocxIngestor.py`, `PdfIngestor.py`, `TextIngestor.py`
 
 These submodules respectively provide the subclasses
-`CsvIngestor`, `DocxIngestor`, 'PdfIngestor`, and
+`CsvIngestor`, `DocxIngestor`, `PdfIngestor`, and
 `TextIngestor`. Each subclass provides a realization
 of the abstract `parse` method that ingests quotes
 from the appropriate file type.

@@ -25,8 +25,8 @@ class PdfIngestor(IngestorInterface):
         if not cls.can_ingest(path):
             raise IngestionError
         quotes = []
-        # Note: The approach below does not create any temporary files that
-        # would need to be deleted as per the project rubric.
+        # Note: The approach below does not create any temporary files
+        # that would need to be deleted as per the project rubric.
         proc = subprocess.run(['pdftotext', path, '-'], stdout=subprocess.PIPE)
         text = proc.stdout.decode('utf-8')
         lines = [x.strip('\f') for x in text.split('\n')]

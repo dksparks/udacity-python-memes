@@ -37,8 +37,8 @@ class MemeEngine:
         of the MemeEngine object.
 
         :param img_path: The path to the input image.
-        :param text: The body to text to add to the image.
-        :param author: The author to be added to the image.
+        :param text: The body text to add to the image.
+        :param author: The author to add to the image.
         :param width: The maximum width of the result.
         :return: The path where the result was saved.
         """

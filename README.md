@@ -152,9 +152,8 @@ Dependencies:  `QuoteModel`, `IngestorInterface`
 
 This submodule provides a final subclass `Ingestor`
 with a realization of `parse` that determines and
-applies the appropriate ingestion strategy for a file
+applies the appropriate ingestion strategy for the file
 provided.
-
 
 Dependencies:  `QuoteModel`, `IngestorInterface`,
 `CsvIngestor`, `DocxIngestor`, `PdfIngestor`,

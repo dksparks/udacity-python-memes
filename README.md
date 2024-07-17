@@ -76,9 +76,7 @@ When finished executing the project, simply run
 Although the recommended way to interact with this
 project is via the CLI tool or the Flask app, the user
 may still find this description of the individual
-components of the project to be helpful. Perhaps more
-honestly, this section is here only because the
-project seems to require it.
+components of the project to be helpful.
 
 > Note: Each component's list of dependencies below
 > includes only those dependencies not found in the
